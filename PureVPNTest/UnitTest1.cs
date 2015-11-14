@@ -15,24 +15,18 @@ using OpenQA.Selenium.Appium.Android;
 using System.Net;
 using OpenQA.Selenium.Appium.Android.Interfaces;
 using OpenQA.Selenium.Support.UI;
+using NUnit.Framework;
 
-using TestClass = NUnit.Framework.TestFixtureAttribute;
-using TestMethod = NUnit.Framework.TestAttribute;
-using TestCleanup = NUnit.Framework.TearDownAttribute;
-using TestInitialize = NUnit.Framework.SetUpAttribute;
-using ClassCleanup = NUnit.Framework.TestFixtureTearDownAttribute;
-using ClassInitialize = NUnit.Framework.TestFixtureSetUpAttribute;
-
-using NUnitAssert = NUnit.Framework.Assert;
 
 namespace PureVPNTest
 {
-    [TestClass]
+
+    [TestFixture]
     public class UnitTest1
     {
         private AndroidDriver<AppiumWebElement> driver;
-       
-        [TestInitialize]
+
+        [SetUp]
         public void TestMethod1()
         {
             DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -51,13 +45,8 @@ namespace PureVPNTest
             driver = new AndroidDriver<AppiumWebElement>(new Uri("http://127.0.0.1:8082/wd/hub"), capabilities);
         }
 
-        [TestCleanup]
-        public void AfterAll()
-        {
-            driver.Quit();
-        }
-
-        [TestMethod]
+     
+       [Test]
         public void login()
         {
             int subTestNo = 1;
@@ -113,5 +102,10 @@ namespace PureVPNTest
                 Utils.writeToFile(output.ToString());
             
         }
+       [Test]
+       public void AfterAll()
+       {
+           driver.Quit();
+       }
     }
 }
