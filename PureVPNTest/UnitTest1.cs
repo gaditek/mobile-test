@@ -44,7 +44,11 @@ namespace PureVPNTest
 
             driver = new AndroidDriver<AppiumWebElement>(new Uri("http://127.0.0.1:8082/wd/hub"), capabilities);
         }
+        [Test]
+        public void maina()
+        { 
 
+        }
      
        [Test]
         public void login()
@@ -102,7 +106,7 @@ namespace PureVPNTest
                 Utils.writeToFile(output.ToString());
             
         }
-       [Test]
+          [TestFixtureTearDown]
        public void AfterAll()
        {
            driver.Quit();
